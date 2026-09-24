@@ -1,0 +1,17 @@
+{
+  "name": "geogestion-test",
+  "version": "1.0.0",
+  "description": "Prueba E2E con Playwright del formulario de demo de GDW Health (GoDoWorks)",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "report": "playwright show-report"
+  },
+  "author": "Elena A.",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^26.6.2"
+  }
+}

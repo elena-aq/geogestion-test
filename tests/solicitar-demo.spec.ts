@@ -26,8 +26,6 @@ test('Solicitud de demo de GDW Health con datos incompletos muestra error de val
     await expect(page).toHaveURL(/\/gdw-health\/#contacto$/);
     await expect(gdwHealth.tituloFormulario).toBeVisible();
     await expect(gdwHealth.botonEnviarConsulta).toBeVisible();
-    // No se verifica toBeInViewport(): tras el salto, contenido que carga tarde desplaza el
-    // formulario fuera de pantalla. Es un defecto del sitio.
   });
 
   await test.step('5. Completar el formulario dejando vacío el campo Empresa', async () => {

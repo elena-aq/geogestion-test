@@ -74,29 +74,3 @@ video y contexto del error. El trace se genera en el primer reintento (`trace: '
 ├── playwright.config.ts
 └── package.json
 ```
-
-## Decisiones y limitaciones
-
-### Captcha (hCaptcha)
-
-El campo "Soy humano" es un **hCaptcha**, un servicio anti-bot de terceros. No es un checkbox propio
-del formulario, por lo que **no se automatiza ni se intenta evadir**. El test solo verifica que el
-captcha esté presente y lo deja sin marcar. Esto no afecta el objetivo del test: la validación de
-campos obligatorios ocurre antes que la del captcha, así que el mensaje "Faltan datos..." se muestra
-igual.
-
-### Defecto encontrado: el formulario no queda en pantalla (paso 4)
-
-Al hacer click en "Solicita una Demo", la página baja hasta el formulario, pero unos 300 ms después
-contenido que se carga tarde agrega ~750 px **por encima** del formulario. Como el scroll no se
-compensa, la vista termina en la sección "¿Qué novedades tenemos?" y el formulario queda fuera de
-pantalla. Se reproduce de forma consistente en Chrome a 1280×720 con caché vacía.
-
-Por este motivo el paso 4 verifica que la URL navegue a `#contacto` y que el formulario sea visible,
-pero no que quede dentro de la pantalla (`toBeInViewport()`), ya que esa verificación falla siempre
-por este defecto.
-
-### Idioma del navegador
-
-Con el navegador en inglés el sitio muestra un banner fijo "View this page in English". El proyecto
-configura `locale: 'es-UY'` para simular a un usuario de Uruguay y evitar el banner.

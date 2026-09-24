@@ -41,7 +41,7 @@ test('Solicitud de demo de GDW Health con datos incompletos muestra error de val
 
   await test.step('7. Verificar el mensaje de error "Faltan datos. Revisá los campos marcados"', async () => {
     await expect(gdwHealth.mensajeAviso).toBeVisible();
-    await expect(gdwHealth.mensajeAviso).toContainText(textos.errorFaltanDatos);
+    await expect(gdwHealth.mensajeAviso).toHaveText(textos.errorFaltanDatos);
     await expect(gdwHealth.inputEmpresa).toHaveAttribute('aria-invalid', 'true');
     await expect(gdwHealth.inputNombreCompleto).not.toHaveAttribute('aria-invalid');
 
